@@ -34,7 +34,7 @@ function clearInputs() {
       <h1>The Wei</h1>
       <input id="etherInput" placeholder="ETH" onChange={convertEtherToWei} />
       <input id="weiInput" placeholder="WEI" onChange={convertWeiToEther} />
-      <button onClick={clearInputs}>CLEAR</button>
+      <button onClick={clearInputs}>RESET</button>
     </div>
   )
 }
