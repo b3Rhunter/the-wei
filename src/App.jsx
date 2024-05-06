@@ -1,3 +1,5 @@
+import { ethers } from 'ethers';
+
 function App() {
 
   function convertEtherToWei() {
@@ -7,7 +9,7 @@ function App() {
       weiInput.value = '';
       return;
     }
-    const wei = BigInt(Math.floor(ether * 1e18));
+    const wei = ethers.parseEther(ether)
     weiInput.value = wei.toString();
 }
 
@@ -18,19 +20,14 @@ function convertWeiToEther() {
       etherInput.value = '';
       return;
     }
-    const ether = Number(wei) / 1e18;
-    if (ether % 1 === 0) { 
-        etherInput.value = ether.toString();
-    } else {
-        etherInput.value = ether.toFixed(18).replace(/\.?0+$/, '');
-    }
+    const ether = ethers.formatEther(wei)
+    etherInput.value = ether 
 }
 
 function clearInputs() {
     document.getElementById('etherInput').value = '';
     document.getElementById('weiInput').value = '';
 }
-
 
   return (
     <div className='app'>
